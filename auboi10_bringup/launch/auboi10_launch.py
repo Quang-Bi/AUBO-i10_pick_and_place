@@ -27,7 +27,7 @@ def generate_launch_description():
     )
     # Terminal 1: Gazebo Harmonic
     gazebo = ExecuteProcess(
-        cmd=["gz", "sim", "r", world_file],
+        cmd=["gz", "sim", "-r", world_file],
         cwd=aubo_description_dir,
         output="screen",
     )
