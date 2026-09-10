@@ -1,0 +1,43 @@
+
+- ros_topic_name: "/model/target_box/pose"
+  gz_topic_name: "/model/target_box/pose"
+  ros_type_name: "geometry_msgs/msg/Pose"
+  gz_type_name: "gz.msgs.Pose"
+  direction: GZ_TO_ROS
+
+
+- ros_service_name: "/world/pick_and_place_world/set_pose"
+  gz_service_name: "/world/pick_and_place_world/set_pose"
+  ros_type_name: "ros_gz_interfaces/srv/SetEntityPose"
+  gz_req_type_name: "gz.msgs.Pose"
+  gz_rep_type_name: "gz.msgs.Boolean"
+
+- ros_service_name: "/world/pick_and_place_world/remove"
+  gz_service_name: "/world/pick_and_place_world/remove"
+  ros_type_name: "ros_gz_interfaces/srv/DeleteEntity"
+  gz_req_type_name: "gz.msgs.Entity"
+  gz_rep_type_name: "gz.msgs.Boolean"
+
+- ros_service_name: "/world/pick_and_place_world/create"
+  gz_service_name: "/world/pick_and_place_world/create"
+  ros_type_name: "ros_gz_interfaces/srv/SpawnEntity"
+  gz_req_type_name: "gz.msgs.EntityFactory"
+  gz_rep_type_name: "gz.msgs.Boolean"
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+

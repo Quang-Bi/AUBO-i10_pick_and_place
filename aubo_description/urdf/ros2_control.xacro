@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:arg name="prefix" default=""/>
+<xacro:property name="prefix" value="$(arg prefix)"/>
+<xacro:arg name="fingerprefix" default="dh_ag95"/>
+<xacro:property name="fingerprefix" value="$(arg fingerprefix)"/>
+
+<ros2_control name="Auboi10System" type="system">
+  <hardware>
+    <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+  </hardware>
+
+
+
+<joint name="shoulder_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+
+<joint name="upperArm_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+
+
+<joint name="foreArm_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+
+
+<joint name="wrist1_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+
+
+<joint name="wrist2_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+
+
+<joint name="wrist3_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+
+
+<!-- DH AG95 Main Actuated Joint -->
+  <joint name="dh_ag95_left_outer_knuckle_joint">
+    <command_interface name="position"/>
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+  <!-- DH AG95 Passive Mimic Joints for Gazebo Harmonic Simulation -->
+  <joint name="dh_ag95_right_outer_knuckle_joint">
+    <mimic joint="dh_ag95_left_outer_knuckle_joint" multiplier="1" offset="0"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+  <joint name="dh_ag95_left_finger_joint">
+    <mimic joint="dh_ag95_left_outer_knuckle_joint" multiplier="1" offset="0"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="dh_ag95_right_finger_joint">
+    <mimic joint="dh_ag95_left_outer_knuckle_joint" multiplier="1" offset="0"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+  <joint name="dh_ag95_left_inner_knuckle_joint">
+    <mimic joint="dh_ag95_left_outer_knuckle_joint" multiplier="1" offset="0"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+  <joint name="dh_ag95_right_inner_knuckle_joint">
+    <mimic joint="dh_ag95_left_outer_knuckle_joint" multiplier="1" offset="0"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <param name="initial_position">0.0</param>
+  </joint>
+
+</ros2_control>
+
+<gazebo>
+  <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+   <parameters>/home/quang/ros2_ws/install/aubo_description/share/aubo_description/config/ros2_controllers.yaml</parameters>
+  </plugin>
+</gazebo>
+
+
+</robot>
