@@ -27,6 +27,7 @@ setup(
             'test_env = gymnasium_auboi10.test_env:main',
             'aubo_env = gymnasium_auboi10.aubo_env:main',
             'train_sac = gymnasium_auboi10.train_sac:main',
+            'log_trajectory_demo = gymnasium_auboi10.log_trajectory_demo:main',
             
         ],
     },
