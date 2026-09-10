@@ -32,7 +32,7 @@
         <visual>
           <origin xyz="-0.036673 0.00875 -0.098336" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/visual/outer_knuckle.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/visual/outer_knuckle.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
           <material name="">
@@ -42,7 +42,7 @@
         <collision>
           <origin xyz="-0.036673 0.00875 -0.098336" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/collision/outer_knuckle.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/collision/outer_knuckle.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
         </collision>
@@ -64,7 +64,7 @@
         <visual>
           <origin xyz="-0.016 0.0254 -0.10586" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/visual/inner_knuckle.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/visual/inner_knuckle.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
           <material name="">
@@ -74,7 +74,7 @@
         <collision>
           <origin xyz="-0.016 0.0254 -0.10586" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/collision/inner_knuckle.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/collision/inner_knuckle.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
         </collision>
@@ -96,7 +96,7 @@
         <visual>
           <origin xyz="-0.091673 0.00875 -0.098336" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/visual/finger.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/visual/finger.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
           <material name="">
@@ -106,7 +106,7 @@
         <collision>
           <origin xyz="-0.091673 0.00875 -0.098336" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/collision/finger.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/collision/finger.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
         </collision>
@@ -130,7 +130,7 @@
         <visual>
           <origin xyz="-0.0705 -0.0 -0.12056" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/visual/finger_pad.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/visual/finger_pad.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
           <material name="">
@@ -140,7 +140,7 @@
         <collision>
           <origin xyz="-0.0705 -0.0 -0.12056" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://aubo_description/meshes/aubo_i10/collision/finger_pad.stl"
+            <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/collision/finger_pad.stl"
               scale="0.001 0.001 0.001" />
           </geometry>
         </collision>
@@ -230,7 +230,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://aubo_description/meshes/aubo_i10/visual/base_link.stl"
+          <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/visual/base_link.stl"
             scale="0.001 0.001 0.001" />
         </geometry>
         <material name="">
@@ -240,7 +240,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://aubo_description/meshes/aubo_i10/collision/base_link.stl"
+          <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/collision/base_link.stl"
             scale="0.001 0.001 0.001" />
         </geometry>
       </collision>
@@ -261,7 +261,7 @@
       <visual>
         <origin xyz="0.0405 0.0143 -0.0147" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://aubo_description/meshes/aubo_i10/visual/gripper_body.stl"
+          <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/visual/gripper_body.stl"
             scale="0.001 0.001 0.001" />
         </geometry>
         <material name="">
@@ -271,7 +271,7 @@
       <collision>
         <origin xyz="0.0405 0.0143 -0.0147" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://aubo_description/meshes/aubo_i10/collision/gripper_body.stl"
+          <mesh filename="file://$(find aubo_description)/meshes/aubo_i10/collision/gripper_body.stl"
             scale="0.001 0.001 0.001" />
         </geometry>
       </collision>

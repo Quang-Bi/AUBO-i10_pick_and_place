@@ -2,7 +2,7 @@ import os
 
 from launch import LaunchDescription
 from launch.actions import ExecuteProcess, TimerAction, SetEnvironmentVariable
-from launch.substitutions import Command
+from launch.substitutions import Command, FindExecutable
 from launch_ros.actions import Node
 
 
@@ -32,7 +32,7 @@ def generate_launch_description():
         output="screen",
     )
     # Terminal 2: robot_state_publisher
-    robot_description = Command(["xacro ", xacro_file])
+    robot_description = Command([FindExecutable(name="xacro"), " ", xacro_file])
 
     robot_state_publisher = Node(
         package="robot_state_publisher",
