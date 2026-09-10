@@ -11,13 +11,15 @@ II. DEPENDENCIES:
 - ROS2 Jazzy
 - Gazebo Harmonic
 - Các phần phụ thuộc python có thể được cài đặt từ tệp require.txt
+```shell
+pip install --break-system-packages -r requirements.txt
+```
 
 III. Chạy training:
 
-
-Load the robot in Gazebo
+Load AUBO-i10, gripper DH-AG95, pick_and_place_world lên Gazebo, kích hoạt controllers
 ```shell
-roslaunch pick_and_place panda_world.launch 
+ros2 launch auboi10_bringup auboi10_launch.py
 ```
 
 Start MoveIt for motion planning
