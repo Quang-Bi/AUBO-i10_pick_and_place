@@ -287,7 +287,13 @@ class AuboPickAndPlaceEnv(gym.Env):
          #   rng.uniform(*TARGET_SAMPLE_XY_RANGE[0]),
          #   rng.uniform(*TARGET_SAMPLE_XY_RANGE[1]),
         #)
-        #Phần bị chú thích vì đang thực hiện giai đoạn 1 của curriculum cho aubo gắp vật vs vị trí cố định
+        #obj_pose = Pose()
+        #obj_pose.position.x = float(obj_xy[0])
+        #obj_pose.position.y = float(pbj_xy[1])
+        #obj_pose.position.z = float(TABLE_TOP_Z + BOX_HALF_SIZE)
+        #obj_pose.orientation.w = 1.0
+        #==>Phần này bị chú thích để thực hiện giai đoạn 1 của curriculum cho aubo gắp vật vs vị trí cố định, xong giai đoạn 1 r thì bỏ
+        #tắt chú thích, xóa dòng lệnh khai báo vị trí của target box ở dưới
         fixed_obj_x = 0.90
         fixed_obj_y = -0.40
         fixed_tgt_x = 0.80
@@ -425,7 +431,7 @@ class AuboPickAndPlaceEnv(gym.Env):
 
 
         # Lọc bỏ giá trị TF lỗi (0, 0, 0), tránh báo động giả
-        # SỬA LỖI 1: Nới rộng vùng kiểm tra xuống -1.0 để không bỏ sót các pha kẹp đâm sâu xuống dưới bàn
+        # Nới rộng vùng kiểm tra xuống -1.0 để không bỏ sót các pha kẹp đâm sâu xuống dưới bàn
         if ee_pos[2] > -1.0:
             if float(ee_pos[2]) < (TABLE_TOP_Z - TABLE_COLLISION_Z_MARGIN):
                 return "table_collision"
@@ -526,7 +532,6 @@ class AuboPickAndPlaceEnv(gym.Env):
         if self._prev_dist_ee_obj is None:
             self._prev_dist_ee_obj = dist_ee_obj  # bảo vệ nếu step() gọi trước reset() lần nào đó
            
-        # SỬA LỖI 2: Chỉ thưởng tiến lại gần hộp nếu mũi kẹp vẫn ở trên mặt bàn an toàn, phạt nếu chìm xuống
         if ee_pos[2] >= (TABLE_TOP_Z - 0.02):
             r_reach_progress = REACH_PROGRESS_SCALE * (self._prev_dist_ee_obj - dist_ee_obj)
             r_reach = r_reach_progress - REACH_DIST_SCALE * dist_ee_obj
@@ -556,7 +561,7 @@ class AuboPickAndPlaceEnv(gym.Env):
         r_success = 100.0 if success else 0.0
 
 
-        #  (e) Phạt jerk 
+        #(e) Phạt jerk 
         r_jerk = 0.0
         if len(self._action_history) == 3:
             a0, a1, a2 = self._action_history
