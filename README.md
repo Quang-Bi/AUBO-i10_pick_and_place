@@ -7,6 +7,8 @@ I. GIỚI THIỆU:
 - Robot đến thời điểm hiện tại mới đang training ở giải đoạn 1 (gắp hộp với vị trí cố định). Dự success_rate lên tới 60% sẽ cho hộp spawn ở vị trí lân
   cận ngẫu nhiên, và sau đó khi đạt success_rate 80%, domain randomization sẽ bắt đầu được áp dụng.
 
+  Nếu muốn bỏ qua giai đoạn một
+
 II. DEPENDENCIES:
 - ROS2 Jazzy
 - Gazebo Harmonic
