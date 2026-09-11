@@ -2,12 +2,10 @@
 Điều khiển robot AUBO-i10 bằng Reinforcement Learning định hướng Sim2Real.
 
 I. GIỚI THIỆU:
-- Pipeline Reinforcement Learning (SAC) trên ROS 2 Jazzy + Gazebo Harmonic, điều khiển cánh tay robot Aubo i10 (6 bậc tự do) kèm gripper DH-AG95 thực hiện tác vụ Pick-and-Place, được thiết kế hướng tới chuyển giao Sim2Real.
-- Tài liệu này sẽ hướng dẫn cài đặt, chạy và reproduce hệ thống.
-- Robot đến thời điểm hiện tại mới đang training ở giải đoạn 1 (gắp hộp với vị trí cố định). Dự success_rate lên tới 60% sẽ cho hộp spawn ở vị trí lân
-  cận ngẫu nhiên, và sau đó khi đạt success_rate 80%, domain randomization sẽ bắt đầu được áp dụng.
+- Pipeline Reinforcement Learning (SAC) trên ROS 2 Jazzy + Gazebo Harmonic, điều khiển cánh tay robot AUBO-i10 kèm gripper DH-AG95 thực hiện tác vụ Pick-and-Place, được thiết kế hướng tới chuyển giao Sim2Real.
+- Tài liệu này sẽ hướng dẫn cài đặt, khởi tạo training cho robot.
+- Robot đến thời điểm hiện tại mới đang training ở giải đoạn 1 (gắp hộp với vị trí cố định), với success_rate = 0. Dự success_rate lên tới 60% sẽ cho hộp spawn ở vị trí lân cận ngẫu nhiên, và sau đó khi đạt success_rate 70%, domain randomization sẽ bắt đầu được áp dụng.
 
-  Nếu muốn bỏ qua giai đoạn một
 
 II. DEPENDENCIES:
 - ROS2 Jazzy
@@ -24,17 +22,9 @@ Load AUBO-i10, gripper DH-AG95, pick_and_place_world lên Gazebo, kích hoạt c
 ros2 launch auboi10_bringup auboi10_launch.py
 ```
 
-Start MoveIt for motion planning
+Tiếp tục training từ checkpoint 90000, nếu muốn áp dụng randomization thì tắt cờ disable domain_randomization
 ```shell
-roslaunch panda_sim_moveit sim_move_group.launch
+ros2 run gymnasium_auboi10 train_sac --resume-from ~/runs/20260909_123359/checkpoints/sac_aubo_pick_place_90000_steps --disable-domain-randomization
 ```
 
-Run the object detector
-```shell
-rosrun pick_and_place object_detector.py
-```
-
-Run the pick-and-place controller
-```shell
-rosrun pick_and_place pick_and_place_state_machine.py
-```
+Nếu muốn training với target box được spawn ngẫu nhiên vị trí thì đọc chú thích ở dòng 295, 296 trong file aubo_env.py
