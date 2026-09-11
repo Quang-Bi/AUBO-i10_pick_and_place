@@ -22,9 +22,8 @@ Load AUBO-i10, gripper DH-AG95, pick_and_place_world lên Gazebo, kích hoạt c
 ros2 launch auboi10_bringup auboi10_launch.py
 ```
 
-Tiếp tục training từ checkpoint 90000, nếu muốn áp dụng randomization thì tắt cờ disable domain_randomization
+Tiếp tục training từ checkpoint 90000 steps. Nếu muốn áp dụng randomization, ta chỉ cần tắt cờ disable domain_randomization. Nếu muốn training với target box được spawn ngẫu nhiên vị trí, cần đọc chú thích ở dòng 295, 296 trong file aubo_env.py
 ```shell
 ros2 run gymnasium_auboi10 train_sac --resume-from ~/runs/20260909_123359/checkpoints/sac_aubo_pick_place_90000_steps --disable-domain-randomization
 ```
 
-Nếu muốn training với target box được spawn ngẫu nhiên vị trí thì đọc chú thích ở dòng 295, 296 trong file aubo_env.py
