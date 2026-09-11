@@ -27,3 +27,17 @@ Tiếp tục training từ checkpoint 90000 steps. Nếu muốn áp dụng rando
 ros2 run gymnasium_auboi10 train_sac --resume-from ~/runs/20260909_123359/checkpoints/sac_aubo_pick_place_90000_steps --disable-domain-randomization
 ```
 
+
+# Video demo training checkpoint 90000 steps
+
+
+https://github.com/user-attachments/assets/7566e1ad-728f-4998-b2b6-8a1026f0a1aa
+
+
+Demo training tại một file checkpoint khác
+
+https://github.com/user-attachments/assets/953c743b-2e23-46e5-9438-bb1b339d98b2
+
+
+
+
