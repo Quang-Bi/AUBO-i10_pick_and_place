@@ -22,17 +22,7 @@ Load AUBO-i10, gripper DH-AG95, pick_and_place_world lên Gazebo, kích hoạt c
 ros2 launch auboi10_bringup auboi10_launch.py
 ```
 
-Start MoveIt for motion planning
-```shell
-roslaunch panda_sim_moveit sim_move_group.launch
-```
-
-Run the object detector
+Chạy training
 ```shell
 rosrun pick_and_place object_detector.py
-```
-
-Run the pick-and-place controller
-```shell
-rosrun pick_and_place pick_and_place_state_machine.py
 ```
