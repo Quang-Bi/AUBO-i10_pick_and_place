@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 50 # Tần số cập nhật 50Hz (1ms) cho thời gian thực
+    update_rate: 50 
 
     # Broadcaster phát trạng thái tất cả các khớp lên topic /joint_states
     joint_state_broadcaster:
@@ -25,7 +25,7 @@ arm_controller:
       - wrist2_joint
       - wrist3_joint
 
-    # Giao diện nhận lệnh điều khiển (khuyên dùng position hoặc velocity cho Sim2Real)
+    # Giao diện nhận lệnh điều khiển 
     command_interfaces:
       - position
 
@@ -59,7 +59,3 @@ gripper_controller:
     goal_tolerance: 0.01
     stalled_velocity_threshold: 0.001
     stall_timeout: 1.0
-    #gains:
-      #dh_ag95_left_outer_knuckle_joint: {p: 200.0, i: 0.1, d: 10.0}
-      #dh_ag95_left_outer_knuckle_joint: {p: 1500.0, i: 0.0, d: 15.0}
-      

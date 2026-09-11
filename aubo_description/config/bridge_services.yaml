@@ -1,4 +1,3 @@
-
 - ros_topic_name: "/model/target_box/pose"
   gz_topic_name: "/model/target_box/pose"
   ros_type_name: "geometry_msgs/msg/Pose"
