@@ -15,7 +15,7 @@ II. DEPENDENCIES:
 pip install --break-system-packages -r requirements.txt
 ```
 
-III. Chạy training:
+III. Training:
 
 Load AUBO-i10, gripper DH-AG95, pick_and_place_world lên Gazebo, kích hoạt controllers
 ```shell
