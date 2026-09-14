@@ -251,6 +251,10 @@ def parse_args() -> argparse.Namespace:
         "--resume-from", type=str, default=None,
         help="Đường dẫn .zip của model đã lưu để load lại và tiếp tục huấn luyện.",
     )
+    parser.add_argument(
+        "--replay-buffer", type=str, default=None,
+        help="Đường dẫn .pkl của Replay Buffer để nạp cùng với model.",
+    )
     return parser.parse_args()
 
 
@@ -279,6 +283,15 @@ def main() -> None:
                 custom_objects=custom_objects,
 
             )
+
+            if args.replay_buffer is not None:
+                if os.path.exists(args.replay_buffer):
+                    print(f"Đang nạp replay buffer '{args.replay_buffer}'...")
+                    model.load_replay_buffer(args.replay_buffer)
+                    print("-> Nạp replay buffer thành công")
+                else:
+                    print(f"-> LỖI: Không tìm thấy file {args.replay_buffer}. Vui lòng kiểm tra lại đường dẫn!")
+
         else:
             model = SAC(
                 policy="MlpPolicy",
