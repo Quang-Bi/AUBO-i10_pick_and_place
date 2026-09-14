@@ -25,9 +25,6 @@ except ImportError:  # pragma: no cover - fallback khi chạy như script rời
     from domain_randomizer import DomainRandomizationWrapper
 
 
-# =====================================================================
-# Callback: lưu best_model.zip dựa trên reward huấn luyện (rolling mean)
-# =====================================================================
 class SaveOnBestTrainingRewardCallback(BaseCallback):
     """Định kỳ đọc log CSV của `Monitor`, tính trung bình động của
     reward/episode trên `check_freq` bước gần nhất, và lưu
@@ -100,21 +97,6 @@ class DomainRandomizationLoggingCallback(BaseCallback):
 
 # Callback: Curriculum thu nhỏ/nới rộng dần biên độ hành động (max_delta_frac)
 class SafetyCurriculumCallback(BaseCallback):
-    """Tăng dần `max_delta_frac` của môi trường từ `start_frac` -> `end_frac`
-    tuyến tính theo số bước huấn luyện đã đi qua (`num_timesteps`), thay vì
-    dùng ngay biên độ hành động tối đa từ đầu.
-
-    Lý do: ở giai đoạn đầu huấn luyện (policy gần như ngẫu nhiên, đặc
-    biệt trước khi `learning_starts`), hành động có biên độ lớn dễ gây
-    chuyển động hỗn loạn -> tự va đập / đập bàn (đúng vấn đề quan sát
-    được trong thực tế). Bắt đầu với biên độ nhỏ giúp giới hạn "mức độ
-    nguy hiểm" của các hành động ngẫu nhiên ban đầu, và nới rộng dần khi
-    policy đã bắt đầu học được các chuyển động có ý nghĩa.
-
-    Gọi `env.set_max_delta_frac(...)` xuyên qua toàn bộ chuỗi wrapper
-    nhờ cơ chế `__getattr__` mặc định của `gymnasium.Wrapper` (tự động
-    chuyển tiếp xuống `AuboPickAndPlaceEnv` ở lớp trong cùng)."""
-
     def __init__(
         self,
         start_frac: float = 0.15,
